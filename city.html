@@ -1,40 +1,49 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>City</title>
 </head>
+
 <body>
 
     <h2>City Game By Kaden Smith</h2>
 
     <form>
-        <label for="form1_age">What is your age </label>
-        <input type="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+        <label for="city">Where in the world:</label>
+        <input type="password" id="city" value="San Diego">
+        <br>
 
-        <label for="form1_nick">What is your nickname </label>
-        <input type="text" id="form1_nick" name="form1_nick" autofocus> <br>
+        <label for="guess">Guess the city:</label>
+        <input type="text" id="guess">
+        <br>
 
-        <input type="button" onclick="resolveForm()" value="Get values from form">
+        <button type="button" onclick="checkCity()">Check the guess</button>
+
     </form>
 
-
-    <p id="result">This text will be replaced </p>
+    <div id="result"></div>
 
     <script>
 
-        function resolveForm() {
-            console.log("Getting form values")
-            age = document.getElementById("form1_age").value
-            nick = document.getElementById("form1_nick").value
-            confirmed = confirm("Are these the values? " + age + " and " + nick)
+        let oops = 0;
+        let found = 0;
 
-            out = document.getElementById("result")
-            if (confirmed) {
-                out.innerHTML = "Values were confirmed"
+        function checkCity() {
+            const city = document.getElementById('city').value;
+            const guess = document.getElementById('guess').value;
+
+            if (guess === city) {
+                found += 1;
+                alert("Gotcha");
             } else {
-                out.innerHTML = "Values were not confirmed"
+                oops += 1;
+                alert("Awe");
             }
+
+            document.getElementById('result').innerHTML = `Wrong guesses: ${oops}, Correct guesses: ${found}`;
         }
+
     </script>
 
 </body>
