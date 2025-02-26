@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Message Cost</title>
+</head>
+
+<h2>Kaden Smith message cost</h2>
+
+<body>
+    <form>
+        <label for="basicprice">Enter cost per letter:</label>
+        <input type="number" id="basicprice" value="0.50"><br><br>
+
+        <label for="breakAt">Enter the length needed for the discount:</label>
+        <input type="number" id="breakAt" value="9"><br><br>
+
+        <label for="discount">Enter the discount percent:</label>
+        <input type="number" id="discount" value="10"><br><br>
+
+        <button onclick="amounts()">Show total</button>
+
+        <div id="results"></div>
+    </form>
+
+    <script>
+        function amounts() {
+            let basicPrice = parseFloat(document.getElementById("basicprice").value);
+            let breakAt = parseInt(document.getElementById("breakAt").value);
+            let discount = parseInt(document.getElementById("discount").value);
+            let myResults = "";
+            
+            for (let size = breakAt - 3; size <= breakAt + 3; size++) {
+                let totalCost;
+
+                // Calculate the total cost based on size
+                if (size < breakAt) {
+                    totalCost = size * basicPrice;
+                } else {
+                    totalCost = size * basicPrice * (1 - discount / 100);
+                }
+
+                // Append the result to the myResults string
+                myResults += `size ${size} costs ${totalCost.toFixed(2)}; `;
+            }
+
+            // Display the results
+            document.getElementById("results").innerHTML = "Totals are: " + myResults;
+        }
+    </script>
+</body>
+
+</html>
