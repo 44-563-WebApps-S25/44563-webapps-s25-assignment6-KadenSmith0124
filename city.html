@@ -46,6 +46,36 @@
 
     </script>
 
+    <div>
+        <img id ="pet" src="cat.jfif" alt="Cat" width="150" height="150" onclick="updatePic()">
+    </div>
+
+    <script>
+        let usePic = 1;
+
+        function updatePic() {
+            let petImage = document.getElementById('pet');
+
+            switch (usePic) {
+                case 1:
+                    petImage.src = 'cat.jfif';
+                    usePic = 2;
+                    break;
+                case 2:
+                    petImage.src = 'Huskey.jfif';
+                    usePic = 3;
+                    break;
+                case 3:
+                    petImage.src = 'lizard.jfif';
+                    usePic = 1;
+                    break;
+                default:
+                    usePic = 1;
+                    break;
+            }
+        }
+    </script>
+
 </body>
 
 </html>
