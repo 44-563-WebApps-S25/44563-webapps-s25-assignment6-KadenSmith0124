@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
- 
+
 <head>
     <title>Dinner</title>
 </head>
@@ -29,6 +29,20 @@
     </div>
     <div id="result"></div>
 
+    <div>
+        <form id="updateForm">
+            <div>
+                <label for="mainDish">Enter main dish:</label>
+                <input type="text" id="mainDish" value="Butter Chicken">
+            </div>
+            <div>
+                <label for="dessert">Enter dessert:</label>
+                <input type="text" id="dessert">
+            </div>
+            <button type="button" onclick="updateDinner()">Update the dinner</button>
+        </form>
+    </div>
+
     <script>
         let my_dinner = {};
         function choices() {
@@ -38,6 +52,17 @@
             my_dinner.candles = document.getElementById('checkbox3').checked;
             document.getElementById('result').innerHTML = JSON.stringify(my_dinner, null, 2);
         }
+
+        function updateDinner() {
+            const mainDish = document.getElementById('mainDish').value;
+            const dessert = document.getElementById('dessert').value;
+
+            my_dinner.main = mainDish;
+            my_dinner.dessert = dessert;
+
+            document.getElementById('result').innerHTML = JSON.stringify(my_dinner, null, 2);
+        }
     </script>
 </body>
-</html> 
+
+</html>
